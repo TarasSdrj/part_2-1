@@ -38,15 +38,15 @@ console.log('-----------------------------------------------');
 
 interface UserP {
   name : () => string;
-  cuteness : number;
-  // coolness : number;
-}
+  cuteness? : number;
+  coolness? : number;
+} 
 
 function heys(a : UserP) {
     return "hey! i'm " + a.name();
 }
 heys({name: () => " roma", cuteness: 100});
-// heys({name: () => "vasya", coolness: 100});
+heys({name: () => "vasya", coolness: 100});
 
 console.log(`task - 4.1. ${heys({name: () => " roma", cuteness: 100})}`);
 console.log('-----------------------------------------------');
@@ -54,14 +54,14 @@ console.log('-----------------------------------------------');
 // 4.2
 
 class Cat {
-  constructor(name: () => string, isPlayful: boolean, type = "cat", cutteness :number ){
+  constructor(name: string,  isPlayful: boolean,  type = "cat",  cutteness :number ){
       }
   name(){
     return this.name;
   }
 }
 class Dog {
-  constructor( name: () =>  string, readonly  weight: number, readonly type = "dog", readonly coolnes :number){
+  constructor( name: string, readonly  weight: number, readonly type = "dog", readonly coolnes :number){
   }
   name(){
     return this.name;
@@ -72,10 +72,11 @@ function hhey(abstractPet: Cat | Dog | UserP) {
     return "hey! i'm " + abstractPet.name();
 }
 let a = new Cat("myavchik", true);
+
 let b = new Dog("gavchik", 333);
-hey(a);
+hhey(a);
 console.log(hhey(a));
-hey(b);
+hhey(b);
 console.log(hhey(b));
 console.log('-----------------------------------------------');
 
@@ -117,3 +118,6 @@ const hello = async () => {
  return await world(10)
 }
 hello().then(r => console.log(r)).catch(e => console.log("fail"))
+
+
+
