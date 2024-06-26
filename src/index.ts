@@ -54,19 +54,25 @@ console.log('-----------------------------------------------');
 // 4.2
 
 class Cat {
-  constructor(name: string,  isPlayful: boolean,  type = "cat",  cutteness :number ){
+  constructor(name: () => string,  isPlayful: boolean,  type = "cat",  cutteness :number ){
       }
   name(){
     return this.name;
   }
 }
 class Dog {
-  constructor( name: string, readonly  weight: number, readonly type = "dog", readonly coolnes :number){
-  }
-  name(){
-    return this.name;
+  constructor(
+      private readonly name: () => string,
+      readonly weight: number,
+      readonly type: string = "dog",
+      readonly coolnes: number = 10
+  ) {}
+
+  getName() {
+      return this.name();
   }
 }
+
 
 function hhey(abstractPet: Cat | Dog | UserP) {
     return "hey! i'm " + abstractPet.name();
